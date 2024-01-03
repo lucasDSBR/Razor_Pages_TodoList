@@ -1,0 +1,50 @@
+@page
+@model TodoListRazor.Pages.Todos.IndexModel
+
+
+<div class="row">
+	<div class="col text-center">
+		<h1>@ViewData["Title"]</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Date</th>
+					<th>Completed</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var todo in Model.Todos)
+				{
+					<tr>
+						<td>@todo.Id</td>
+						<td>@todo.Title</td>
+						<td>@todo.Date.ToString("dd/MM/yyyy")</td>
+						<td>@todo.IsCompleted</td>
+						<td>
+							@if(!@todo.IsCompleted)
+							{
+								<a asp-page-handler="ToCompleted" asp-route-id="@todo.Id" class="btn btn-success">Concluir</a>
+								<a asp-page="Edit" asp-route-id="@todo.Id" class="btn btn-warning" .>Editar</a>
+							}
+							<a asp-page-handler="Delete" asp-route-id="@todo.Id" class="btn btn-danger" onclick="return confirm('Delete this task ?')">Excluir</a>
+						</td>
+					</tr>
+
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<a asp-page="Create" class="btn btn-primary">New Task</a>
+	</div>
+</div>

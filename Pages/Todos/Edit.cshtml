@@ -1,0 +1,22 @@
+@page
+@model TodoListRazor.Pages.Todos.EditModel
+
+<div class="row">
+	<div class="col text-center">
+		<h1>@ViewData["Title"]</h1>
+	</div>
+</div>
+
+
+<form action="" method="post">
+	<div class="mb-3">
+		<label asp-for="Todo.Title">Title</label>
+		<input asp-for="Todo.Title" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label asp-for="Todo.Date">Date</label>
+		<input asp-for="Todo.Date" class="form-control" type="date">
+	</div>
+
+	<input type="submit" value="Update" class="btn btn-primary">
+</form>
